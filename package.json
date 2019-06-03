@@ -1,0 +1,66 @@
+{
+  "name": "IGStories",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main/main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ifedapoolarewaju/igstories.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ifedapoolarewaju/igstories/issues"
+  },
+  "homepage": "https://github.com/ifedapoolarewaju/igstories#readme",
+  "devDependencies": {
+    "electron": "^5.0.1",
+    "electron-builder": "^20.41.0"
+  },
+  "dependencies": {
+    "bootstrap": "^4.1.3",
+    "electron-updater": "^4.0.6",
+    "instagram-private-api": "github:ifedapoolarewaju/instagram-private-api#a547b5bfe8f9cc6751e3b96a7d6debdaf527cd05",
+    "nojs": "^0.1.3"
+  },
+  "build": {
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "ifedapoolarewaju",
+        "repo": "igstories"
+      }
+    ],
+    "appId": "com.ifedapoolarewaju.desktop.igstories",
+    "copyright": "ifedapo Olarewaju 2019",
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "publish": "github",
+      "category": "public.app-category.social-networking"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "publish": "github",
+      "publisherName": "ifedapoolarewaju"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "zip",
+        "deb"
+      ],
+      "publish": "github",
+      "maintainer": "Ifedapo Olarewaju <ifedapoolarewaju@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,96 @@
+.pageCard {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.20);
+  background-color: #FAFAFA;
+  border-radius: 3px;
+  max-width: 25rem;
+}
+
+html {
+  background-image: linear-gradient(to top right, #A82A71, #4C61B0);
+  background-repeat: no-repeat;
+  min-height: 100%;
+  min-width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+body {
+  background-color: transparent;
+  margin: 0 auto;
+}
+
+.cardBox {
+  align-self: center;
+}
+
+.loginInputs {
+  flex-direction: column;
+}
+
+.loginInputs .form-control {
+  width: 100%;
+}
+
+.loginInputs .form-control:first-child {
+  border-bottom-left-radius: 0px;
+  border-top-right-radius: .25rem;
+}
+
+.loginInputs .form-control:last-child {
+  border-bottom-left-radius: .25rem;
+  border-top-right-radius: 0;
+  margin-left: 0;
+  margin-top: -2px;
+}
+
+.disclaimer p:last-child {
+  margin-bottom: 0;
+}
+
+.disclaimer {
+  font-size: 0.85rem;
+}
+
+.disclaimer p {
+  color: #b3b8bc;
+}
+
+@keyframes buttonLogin {
+  0% {
+      background-position: 0%;
+  }
+  100% {
+      background-position: 200%;
+  }
+}
+
+.loginButton {
+  background-image: linear-gradient(to right, #da2b8e, #3e5abb, #da2b8e);
+  background-size: 200%;
+  background-repeat: repeat;
+  background-position: 0%;
+  border: 0;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.loginButton.loggingIn {
+  box-shadow: none;
+  animation: buttonLogin 1000ms linear infinite;
+  animation-direction: normal;
+}
+
+.loginButton:active {
+  background-image: linear-gradient(to right, #a72a71, #343d60, #a72a71) !important;
+  background-color: transparent !important;
+  border: none;
+}
+
+.loginButton:focus {
+  box-shadow: none !important;
+}
+
+.errorMessage {
+  color: #dc3545;
+}

@@ -1,0 +1,277 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+ul {
+  padding-left: 0;
+}
+
+a {
+  text-decoration: underline;
+}
+
+button, a {
+  cursor: pointer;
+}
+
+button, button:focus {
+  border: none;
+  outline: none;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.hide {
+  display: none;
+}
+
+.center {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.settings {
+  position: relative;
+  background: url(../img/user.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  width: 3rem;
+  height: 3rem;
+  outline: none;
+  border-radius: 100%;
+}
+
+.stories {
+  margin-top: 10px;
+  display: block;
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: 90px;
+  white-space: nowrap;
+}
+
+.stories-item {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  font-size: 10px;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.stories-item .not-seen {
+  border-color: red;
+}
+
+.stories-item .seen {
+  border-color: #eee;
+}
+
+.thumb {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border-width: 1px;
+  border-style: solid;
+}
+
+button.play, button.pause {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 3rem;
+  height: 3rem;
+  background: url(../img/play.png);
+  background-color: #aaa;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  border: 3px solid #888;
+  border-radius: 100%;
+}
+
+button.pause {
+  background-image: url(../img/pause.png);
+}
+
+button.play:hover, button.pause:hover {
+  background-color: #ccc;
+}
+
+.story {
+  padding: 20px;
+  background: linear-gradient(to right, #333, #444);
+  color: #ccc;
+  min-height: 800px;
+  height: auto;
+}
+
+.story .title {
+  text-align: left;
+  font-size: 10px;
+}
+
+.story .timeline {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.story .timeline .timeline-item {
+  width: auto;
+  flex: 1 1 auto;
+}
+
+.story .timeline progress {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 4px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+}
+
+.story .timeline progress::-webkit-progress-bar {
+  background: #666;
+}
+
+.story .timeline progress::-webkit-progress-value {
+  background: #888;
+}
+
+.story button.prev, .story button.next {
+  border-radius: 50%;
+  position: absolute;
+  padding: 20px;
+  top: 50%;
+}
+
+.story button.prev {
+  left: 10px;
+  background: url(../img/chevron-left.png) no-repeat center;
+  background-size: 10px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.story button.next {
+  right: 10px;
+  background: url(../img/chevron-right.png) no-repeat center;
+  background-size: 10px;
+  background-color: rgba(255, 255, 255, 0.2);
+
+}
+
+.story button.prev:hover, .story button.next:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.story .view img, .story .view video {
+  max-width: 90%;
+}
+
+.viewer {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  overflow-y: auto;
+  bottom: 0;
+  background: white;
+  z-index: 3;
+  display: none;
+}
+
+.viewer.active {
+  display: block;
+  align-items: center;
+  animation-name: fadeIn;
+  animation-duration: 0.4s;
+  animation-timing-function: ease-out;
+}
+
+.viewer .content img, .viewer .content video {
+  display: block;
+  margin: 0 auto;
+}
+
+.viewer .content img {
+  max-width: 55%;
+}
+
+.viewer button.close {
+  background: transparent;
+  opacity: 0.5;
+}
+
+.viewer .post-caption {
+  margin: 10px auto;
+  max-width: 250px;
+  word-wrap: break-word;
+  font-size: 15px;
+}
+
+.view-on-ig {
+  background: rgb(22, 139, 249);
+  color: white;
+  border: 1px rgb(22, 139, 249) solid;
+  outline: none;
+  padding: 8px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-size: 13px;
+  transition: all .2s ease-out .1s;
+}
+
+.view-on-ig:hover {
+  opacity: 0.8;
+}
+
+.header .search-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-width: 25%;
+}
+
+.header {
+  background-image: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+  border-bottom: 1px solid #DFDFDF;
+}
+
+.dropdown-menu.active {
+  display: block;
+  top: 4.5rem;
+  left: 1rem;
+}
+
+.dropdown-item:hover {
+  cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  background: whiteSmoke;
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb:window-inactive, ::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border: solid whiteSmoke 2px;
+}
+
+::-webkit-scrollbar-thumb:window-inactive:hover, ::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
