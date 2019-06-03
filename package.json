@@ -22,7 +22,7 @@
     "electron-builder": "^20.41.0"
   },
   "dependencies": {
-    "bootstrap": "^4.1.3",
+    "bootstrap": "^4.3.1",
     "electron-updater": "^4.0.6",
     "instagram-private-api": "github:ifedapoolarewaju/instagram-private-api#a547b5bfe8f9cc6751e3b96a7d6debdaf527cd05",
     "nojs": "^0.1.3"
