@@ -25,11 +25,40 @@ function setProfilePic () {
   settingsButton.style.backgroundImage = `url(${url})`;
 }
 
-function getNextIndices(storySets, storySetIndex, itemIndex) {
+function lastSeen(storySet) {
+  const localLastSeen = viewsStorage.get(`${storySet._params.id}`, null);
+  if (!localLastSeen || (localLastSeen && localLastSeen < storySet._params.items[0].taken_at)) {
+    // localLastSeen was never registered or localLastSeen is of an expired story
+    return storySet._params.seen;
+  }
+
+  return Math.max(localLastSeen, storySet._params.seen);
+}
+
+function markAsSeen(storySets, storySetIndex, itemIndex) {
+  const storySet = storySets[storySetIndex];
+  const mark = storySet._params.items[itemIndex].taken_at;
+
+  viewsStorage.set(`${storySet._params.id}`, Math.max(mark, lastSeen(storySet)));
+}
+
+function indexAfterLastSeen (storySet) {
+  const localLastSeen = lastSeen(storySet);
+  for (let index = 0; index < storySet._params.items.length; index++) {
+    if (localLastSeen < storySet._params.items[index].taken_at) {
+      return index;
+    }
+  }
+
+  // if all has been seen, just return the index of the last one
+  return storySet._params.items.length - 1;
+}
+
+function getNextIndices (storySets, storySetIndex, itemIndex) {
   const itemsLength = storySets[storySetIndex]._params.items.length;
   if (itemIndex >= itemsLength - 1) {
-    itemIndex = 0;
     storySetIndex = storySets.length - 1 <= storySetIndex ? -1 : storySetIndex + 1;
+    itemIndex = storySetIndex == -1 ? itemIndex : indexAfterLastSeen(storySets[storySetIndex]);
   } else {
     itemIndex++;
   }
@@ -37,7 +66,7 @@ function getNextIndices(storySets, storySetIndex, itemIndex) {
   return { itemIndex, storySetIndex }
 }
 
-function getPrevIndices(storySets, storySetIndex, itemIndex) {
+function getPrevIndices (storySets, storySetIndex, itemIndex) {
   if (itemIndex <= 0) {
     if (storySetIndex <= 0) {
       storySetIndex = -1;
@@ -65,6 +94,7 @@ function playStories (storySets, storySetIndex, itemIndex) {
 
   const play = () => {
     renderStorySetView(storySets, storySetIndex, itemIndex);
+    markAsSeen(storySets, storySetIndex, itemIndex);
     let duration = storySets[storySetIndex]._params.items[itemIndex].video_duration;
     // additional 5 secs to video duration to make for download lag
     duration = (duration || 15) + 5;

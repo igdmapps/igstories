@@ -4,7 +4,7 @@ function renderStorySets (storySets) {
   storySets.forEach((storySet, index) => {
     const coverImage = storySet._params.user.profile_pic_url;
     const username = storySet._params.user.username;
-    const seenClass = storySet._params.seen === storySet._params.latestReelMedia ? 'seen' : 'not-seen';
+    const seenClass = lastSeen(storySet) === storySet._params.latestReelMedia ? 'seen' : 'not-seen';
     const storySetDom = dom(
       `<div class="stories-item center">
         <img src="${coverImage}" class="thumb ${seenClass}">
@@ -13,8 +13,7 @@ function renderStorySets (storySets) {
     );
 
     storySetDom.onclick = () => {
-      // todo try to detect the last storySet item seen and start from there
-      playStories(storySets, index, 0);
+      playStories(storySets, index, indexAfterLastSeen(storySet));
     }
     storySetsContainer.appendChild(storySetDom);
   });

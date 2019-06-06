@@ -17,15 +17,15 @@ document.addEventListener('DOMContentLoaded', () => {
   ipcRenderer.on('allStories', (evt, storySetsById) => {
     window.storySets = Object.keys(storySetsById).map((userId) => storySetsById[userId]);
     window.storySets.sort((a, b) => {
-      if (b._params.seen !== b._params.latestReelMedia && b._params.expiringAt > a._params.expiringAt) {
+      if (lastSeen(b) !== b._params.latestReelMedia && b._params.expiringAt > a._params.expiringAt) {
         return 1
       }
 
-      if (a._params.seen !== a._params.latestReelMedia && a._params.expiringAt > b._params.expiringAt) {
+      if (lastSeen(a) !== a._params.latestReelMedia && a._params.expiringAt > b._params.expiringAt) {
         return -1
       }
 
-      return b._params.seen !== b._params.latestReelMedia ? 1 : -1;
+      return lastSeen(b) !== b._params.latestReelMedia ? 1 : -1;
     })
     renderStorySets(window.storySets);
   });

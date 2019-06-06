@@ -7,7 +7,10 @@ const path = require('path');
 const url = require('url');
 const instagram = require('./instagram');
 const autoUpdater = require('./autoupdater');
+const Store = require('electron-store');
 
+// avoid TLS warning
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '1'
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -134,7 +137,8 @@ electron.ipcMain.on('login', (evt, data) => {
 })
 
 electron.ipcMain.on('logout', () => {
-  instagram.logout()
+  instagram.logout();
+  (new Store()).clear()
   session = null
   createWindow()
 })
