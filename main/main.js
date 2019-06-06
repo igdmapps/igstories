@@ -21,6 +21,7 @@ function createWindow () {
   if (!mainWindow) {
     mainWindow = new BrowserWindow({
       width: 400,
+      minWidth: 300,
       maxWidth: 700,
       height: 800,
       icon: `${__dirname}/../browser/img/icon.png`,
