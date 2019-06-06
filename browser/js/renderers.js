@@ -8,7 +8,7 @@ function renderStorySets (storySets) {
     const storySetDom = dom(
       `<div class="stories-item center">
         <img src="${coverImage}" class="thumb ${seenClass}">
-        <div>${username}</div>
+        <div class="username">${username}</div>
       <div/>`
     );
 

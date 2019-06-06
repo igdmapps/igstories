@@ -66,9 +66,13 @@ button, button:focus {
   width: 100px;
   height: 100px;
   font-size: 10px;
-  text-overflow: ellipsis;
   cursor: pointer;
   padding: 5px;
+}
+
+.stories-item .username {
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .stories-item .not-seen {
