@@ -47,6 +47,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  window.onblur = () => {
+    if (window.playerTimeoutInstance) {
+      document.querySelector('button.pause').click();
+    }
+  }
+
   document.querySelector('#logout').onclick = () => ipcRenderer.send('logout');
   document.querySelector('#reload').onclick = () => ipcRenderer.send('reload');
 
