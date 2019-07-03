@@ -157,7 +157,7 @@ electron.ipcMain.on('getLoggedInUser', () => {
 electron.ipcMain.on('getAllStories', () => {
   instagram.getAllStories(session).then((stories) => {
     mainWindow.webContents.send('allStories', stories);
-  })
+  }).catch((err) => console.log(err))
 })
 
 electron.ipcMain.on('searchUsers', (_, search) => {

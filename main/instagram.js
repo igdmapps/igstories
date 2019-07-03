@@ -48,7 +48,7 @@ exports.getAllStories = (session) => {
         const userIds = storySets.map((storySet) => `${storySet._params.user.pk}`)
         const fullStorySets = {}
         const loadFullStories = () => {
-          new Client.Feed.UserStory(session, userIds.splice(0, 50)).get()
+          new Client.Feed.UserStory(session, userIds.splice(0, 20)).get()
           .then((stories) => {
             Object.assign(fullStorySets, stories)
             userIds.length ? loadFullStories() : resolve(fullStorySets)
