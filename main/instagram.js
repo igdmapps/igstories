@@ -67,7 +67,7 @@ exports.searchUsers = function (session, search) {
     Client.Account.search(session, search)
       .then((users) => {
         const userIds = users.map((user) => user.id);
-        new Client.Feed.UserStory(session, userIds.splice(0, 50)).get()
+        new Client.Feed.UserStory(session, userIds.splice(0, 20)).get()
           .then(resolve).catch(reject);
       })
       .catch(reject)
