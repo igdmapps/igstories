@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/ifedapoolarewaju/igstories#readme",
   "devDependencies": {
-    "electron": "^5.0.1",
+    "electron": "^7.2.4",
     "electron-builder": "^20.41.0"
   },
   "dependencies": {
